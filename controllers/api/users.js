@@ -4,15 +4,8 @@ const User = require('../../models/user');
 
 module.exports = {
   create,
-  login,
-  checkToken
+  login
 };
-
-function checkToken(req, res) {
-  //verify middleware works
-  console.log('req.user', req.user)
-  res.json(req.exp);
-}
 
 async function create(req, res) {
   try {
