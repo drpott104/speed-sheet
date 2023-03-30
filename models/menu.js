@@ -6,4 +6,4 @@ const menuSchema = new Schema({
     sortOrder: Number
 });
 
-module.exports = mongoose.model('menu', menuSchema);
+module.exports = mongoose.model('Menu', menuSchema);

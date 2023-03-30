@@ -1,17 +1,6 @@
-export default function Menus({ menu, activeMenu, setActiveMenu }) {
-    const menuList = menu.map((menu) => 
-        <li
-            key={menu}
-            className={menu === activeMenu ? 'active' : ''}
-            onClick={() => setActiveMenu(menu)}
-        >
-            {menu}
-        </li>
-    )
+export default function Menus({ menu, handleChangeMenu }) {
     
-    return(
-        <>
-            <ul>{menuList}</ul>
-        </>
+    return (
+        <li onClick={() => handleChangeMenu(menu.name)}>{menu.name}</li>
     )
 }

@@ -5,7 +5,6 @@ const Item = require('./models/item');
 const Menu = require('./models/menu');
 
 (async function() {
-    // delete outlets before creating new ones ???
     await Menu.deleteMany({})
     const menus = await Menu.create([
         {name: 'Breakfast', sortOrder: 1},

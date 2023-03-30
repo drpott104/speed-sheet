@@ -10,14 +10,14 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      if (user) {
+      { user ?
         <>
           <Link to="/orders">Order History</Link>
           <Link to="/orders/new">New Order</Link>
           <span>Welcome, {user.name}</span>
           <Link to="" onClick={handleLogOut}>Log Out</Link>
         </>
-      } else {
+        :
         <AuthPage />
       }
     </nav>
