@@ -13,6 +13,8 @@ export default function App() {
   const [menus, setMenus] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
   const [activeItems, setActiveItems] = useState([]);
+  const [currentOrder, setCurrentOrder] = useState([]);
+  const [orderHistory, setOrderHistory] = useState([]);
 
   useEffect(() => {
       async function getMenus() {
@@ -22,8 +24,6 @@ export default function App() {
         setMenus(menuResults)
         setMenuItems(menuItemResults)
         setActiveItems(initialItems)
-
-        console.log(menuItemResults)
       }
       getMenus()
   }, [])
@@ -35,14 +35,6 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/orders/new" element={<NewOrderPage
-                user={user}
-                setUser={setUser}
-                menus={menus}
-                menuItems={menuItems}
-                activeItems={activeItems}
-                setActiveItems={setActiveItems}
-                />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
               <Route path="/*" element={<NewOrderPage
                 user={user}
@@ -51,6 +43,10 @@ export default function App() {
                 menuItems={menuItems}
                 activeItems={activeItems}
                 setActiveItems={setActiveItems}
+                currentOrder={currentOrder}
+                setCurrentOrder={setCurrentOrder}
+                orderHistory={orderHistory}
+                setOrderHistory={setOrderHistory}
               />} />
             </Routes>
           </>

@@ -1,9 +1,8 @@
-export default function MenuItems({ item }) {
-    
+export default function MenuItems({ item, handleAddToOrder }) {
     return (
-        <>
-            <li>{item.name}</li>
-            <li>{item.description}</li>
-        </>
+        <li onClick={() => handleAddToOrder(item._id)}>
+            {item.name} <br/>
+            {item.description}
+        </li>
     )
 }
