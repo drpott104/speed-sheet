@@ -9,8 +9,9 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
   }
 
   function handleSubmitOrder(order) {
+    const time = new Date()
+    order.unshift(time)
     setOrderHistory([...orderHistory, ...order])
-    console.log(orderHistory)
   }
   
   function handleAddToOrder(itemId) {
@@ -44,12 +45,12 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
         </div>
         <div>
           <h2>Current Order</h2>
-          <div>
+          <form action="" method="POST">
             <label>Room Number:</label>
             <input type="text" />
-          </div>
-          <ul>{order}</ul>
-          <button onClick={() => handleSubmitOrder(order)}>Submit Order</button>
+            <ul>{order}</ul>
+            <button onClick={() => handleSubmitOrder(order)}>Submit Order</button>
+          </form>
         </div>
       </main>
     </>
