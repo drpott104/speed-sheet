@@ -1,17 +1,28 @@
+import './NewOrderPage.css';
+import { useState } from 'react';
 import Menus from '../../components/Menus/Menus';
 import MenuItems from '../../components/MenuItems/MenuItems';
 import OrderDetails from '../../components/OrderDetails/OrderDetails';
 
-export default function NewOrderPage({ user, menus, menuItems, activeItems, setActiveItems, currentOrder, setCurrentOrder, orderHistory, setOrderHistory }) {
+export default function NewOrderPage({ user, menus, menuItems, activeItems, setActiveItems, currentOrder, setCurrentOrder, orderHistory, setOrderHistory, addOrder }) {
+  const [enterOrder, setEnterOrder] = useState({
+    roomNum: '',
+  })
+  console.log(enterOrder)
+  
+  function handleChangeOrder(evt) {
+    setEnterOrder({...enterOrder, [evt.target.name]: evt.target.value})
+  }
+
   function handleChangeMenu(name) {
     const currentItems = menuItems.filter(i => i.menu.name === name)
     setActiveItems(currentItems)
   }
 
-  function handleSubmitOrder(order) {
-    const time = new Date()
-    order.unshift(time)
-    setOrderHistory([...orderHistory, ...order])
+  function handleSubmitOrder(evt) {
+    evt.preventDefault();
+    console.log('submitted', enterOrder)
+    addOrder(enterOrder)
   }
   
   function handleAddToOrder(itemId) {
@@ -19,9 +30,9 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
     setCurrentOrder([...currentOrder, ...orderItem])
   }
   
-  const order = currentOrder.map(item => (
-    <OrderDetails item={item} key={item._id} />
-  ))
+  // const order = currentOrder.map(item => (
+  //   <OrderDetails item={item} key={item._id} />
+  // ))
 
   const activeMenuItems = activeItems.map(item => (
     <MenuItems item={item} key={item._id} handleAddToOrder={handleAddToOrder} />
@@ -34,22 +45,25 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
   return (
     <>
       <h1>New Order Page</h1>
-      <aside>
-        <h2>Menus</h2>
-        <ul>{allMenus}</ul>
-      </aside>
-      <main>
+      <main className='NewOrderPage'>
+        <aside>
+          <h2>Menus</h2>
+          <ul className='menus'>{allMenus}</ul>
+        </aside>
         <div>
           <h2>MenuItems</h2>
           <ul>{activeMenuItems}</ul>
         </div>
         <div>
           <h2>Current Order</h2>
-          <form action="" method="POST">
+          <form>
             <label>Room Number:</label>
-            <input type="text" />
-            <ul>{order}</ul>
-            <button onClick={() => handleSubmitOrder(order)}>Submit Order</button>
+            <input type="text" 
+              name="roomNum"
+              value={enterOrder.roomNum}
+              onChange={handleChangeOrder}
+            />
+            <button onClick={handleSubmitOrder}>Submit Order</button>
           </form>
         </div>
       </main>

@@ -6,7 +6,8 @@ import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
-import * as menuAPI from "../../utilities/menu-api"
+import * as menuAPI from "../../utilities/menu-api";
+import * as orderAPI from "../../utilities/order-api";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -15,6 +16,11 @@ export default function App() {
   const [activeItems, setActiveItems] = useState([]);
   const [currentOrder, setCurrentOrder] = useState([]);
   const [orderHistory, setOrderHistory] = useState([]);
+
+  async function addOrder(orderData) {
+    const newOrder = await orderAPI.addOrder(orderData);
+    console.log(newOrder, "new order response")
+  }
 
   useEffect(() => {
       async function getMenus() {
@@ -47,6 +53,7 @@ export default function App() {
                 setCurrentOrder={setCurrentOrder}
                 orderHistory={orderHistory}
                 setOrderHistory={setOrderHistory}
+                addOrder={addOrder}
               />} />
             </Routes>
           </>
