@@ -2,7 +2,7 @@ export default function MenuItems({ item }) {
     
     return (
         <li>
-            {/* {item.name} */}
+            {item.name}
         </li>
     )
 }

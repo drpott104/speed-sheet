@@ -5,6 +5,7 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import EditMenusPage from '../EditMenusPage/EditMenusPage';
 import NavBar from '../../components/NavBar/NavBar';
 import * as menuAPI from "../../utilities/menu-api";
 import * as orderAPI from "../../utilities/order-api";
@@ -17,21 +18,21 @@ export default function App() {
   const [currentOrder, setCurrentOrder] = useState([]);
   const [orderHistory, setOrderHistory] = useState([]);
 
-  async function addOrder(orderData) {
-    const newOrder = await orderAPI.addOrder(orderData);
-    console.log(newOrder, "new order response")
-  }
-
   useEffect(() => {
-      async function getMenus() {
-        const menuResults = await menuAPI.getMenus()
-        const menuItemResults = await menuAPI.getMenuItems()
-        const initialItems = menuItemResults.filter(i => i.menu.name === 'Breakfast')
-        setMenus(menuResults)
-        setMenuItems(menuItemResults)
-        setActiveItems(initialItems)
-      }
-      getMenus()
+    async function getMenus() {
+      const menuResults = await menuAPI.getMenus()
+      const menuItemResults = await menuAPI.getMenuItems()
+      const pastOrders = await orderAPI.getAllPastOrders()
+      const currentCart = await orderAPI.getCurrentCart()
+      const initialItems = menuItemResults.filter(i => i.menu.name === 'Breakfast')
+      setMenus(menuResults)
+      setMenuItems(menuItemResults)
+      setActiveItems(initialItems)
+      setCurrentOrder(currentCart)
+      setOrderHistory(pastOrders)
+      console.log(pastOrders, 'past orders')
+    }
+    getMenus()
   }, [])
 
   return (
@@ -41,7 +42,11 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/orders" element={<OrderHistoryPage
+                orderHistory={orderHistory}
+                setOrderHistory={setOrderHistory}
+                currentOrder={currentOrder}
+              />} />
               <Route path="/*" element={<NewOrderPage
                 user={user}
                 setUser={setUser}
@@ -53,8 +58,8 @@ export default function App() {
                 setCurrentOrder={setCurrentOrder}
                 orderHistory={orderHistory}
                 setOrderHistory={setOrderHistory}
-                addOrder={addOrder}
               />} />
+              {/* <Route path="/menus/edit" element={<EditMenusPage /> } /> */}
             </Routes>
           </>
           :

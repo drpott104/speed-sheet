@@ -5,5 +5,6 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 router.get('/', menusCtrl.index)
 router.get('/items', menusCtrl.getItems)
+router.get('/menus/edit', menusCtrl.getItems)
 
 module.exports = router;

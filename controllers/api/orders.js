@@ -1,17 +1,20 @@
 const Order = require('../../models/order');
+const User = require('../../models/user');
 
-async function getOrder(req, res) {
+async function getCurrentCart(req, res) {
     try {
-        const items = await Order.find({})
-        res.status(200).json(items)
+        const currentCart = await Order.find({user: req.user._id, isStaged: false})
+        res.status(200).json(currentCart)
     } catch(err) {
         res.status(400).json(err);
     }
 }
 
-async function orderHistory(req, res) {
+async function getPastOrders(req, res) {
     try {
-        const orderHistory = await Order.find({})
+        console.log(req.user)
+        const orderHistory = await Order.find({user: req.user._id, isStaged: true})
+        console.log(orderHistory, 'order history from controller')
         res.status(200).json(orderHistory)
     } catch(err) {
         res.status(400).json(err)
@@ -20,18 +23,21 @@ async function orderHistory(req, res) {
 
 async function create(req, res) {
     try {
-        // req.body.user = req.user._id
+        // req.body.user = req.user.id
         const newOrder = await Order.create(req.body)
-        console.log(newOrder)
         res.json(newOrder)
     } catch(err) {
-        console.log(err)
         res.status(400).json(err)
     }
 }
 
+async function getAll(req, res) {
+    const orders = await Order.find({})
+}
+
 module.exports = {
-    getOrder,
-    orderHistory,
-    create
+    getCurrentCart,
+    getPastOrders,
+    create,
+    getAll
 }
