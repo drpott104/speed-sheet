@@ -1,16 +1,29 @@
 .NewOrderPage {
     height: 100%;
-    display: grid;
-    grid-template-columns: 1.6fr 3.5fr 3fr;
-    grid-template-rows: 1fr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
     background-color: lightgrey;
     border-radius: 2vmin;
   }
   
   .menus {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 3vmin 2vmin;
+    padding: 50px;
+    gap: 25px;
+  }
+  
+  .menus, .menu-items, .order-details {
+    list-style: none;
+  }
+  
+  .current-order {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }

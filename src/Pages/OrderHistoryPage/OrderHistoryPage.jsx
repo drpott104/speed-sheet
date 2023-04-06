@@ -1,10 +1,10 @@
 import OrderHistory from '../../components/OrderHistory/OrderHistory'
 
 export default function OrderHistoryPage({ orderHistory, currentOrder }) {
-  function handleDelivery(currentOrder) {
-    console.log(currentOrder)
+  function handleDelivery(evt) {
+    evt.preventDefault()
   }
-
+  
   const pastOrders = orderHistory.map(order => (
     <OrderHistory order={order} key={order._id} handleDelivery={handleDelivery} />
   ))

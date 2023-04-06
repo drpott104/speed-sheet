@@ -6,8 +6,8 @@ export async function addOrder(orderData) {
   return sendRequest(BASE_URL, 'POST', orderData);
 }
 
-export async function getAllPastOrders() {
-  return sendRequest (`${BASE_URL}/pastOrders`);
+export async function getPastOrders() {
+  return sendRequest (BASE_URL);
 }
 
 export async function getCurrentCart() {

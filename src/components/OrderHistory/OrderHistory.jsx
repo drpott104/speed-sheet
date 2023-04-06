@@ -1,9 +1,8 @@
 export default function orderHistory(order) {
-    console.log(order, "order")
 
     return (
         <li>
-            {order.roomNum}
+            {order.order.roomNum}
         </li>
     )
 }

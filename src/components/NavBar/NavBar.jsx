@@ -9,13 +9,13 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
+    <nav className='nav'>
       { user ?
         <>
           <Link to="/orders">Order History</Link>
           <Link to="/orders/new">New Order</Link>
-          <span>Welcome, {user.name}</span>
-          <Link to="" onClick={handleLogOut}>Log Out</Link>
+          <span>Welcome, {user.name}
+          <Link to="" onClick={handleLogOut}>Log Out</Link></span>
         </>
         :
         <AuthPage />

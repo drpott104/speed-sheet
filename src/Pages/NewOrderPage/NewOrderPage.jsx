@@ -8,26 +8,23 @@ import * as orderAPI from "../../utilities/order-api";
 
 export default function NewOrderPage({ user, menus, menuItems, activeItems, setActiveItems, currentOrder, setCurrentOrder, orderHistory, setOrderHistory }) {
   const [enterOrder, setEnterOrder] = useState({
+    user: user,
     roomNum: '',
     currentOrder: []
   })
   
   function handleSubmitOrder(evt) {
-    console.log('submit order', enterOrder)
     evt.preventDefault();
     enterOrder.isStaged = true
-    console.log(enterOrder, 'new order')
     newOrder(enterOrder);
   }
 
   async function newOrder(orderData) {
     const newOrder = await orderAPI.addOrder(orderData, currentOrder);
     setOrderHistory([...orderHistory, newOrder])
-    console.log(orderHistory, 'order history')
   }
   
   function handleChangeOrder(evt) {
-    console.log(currentOrder)
     setEnterOrder({...enterOrder, [evt.target.name]: evt.target.value, currentOrder})
   }
 
@@ -55,20 +52,16 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
 
   return (
     <>
-      <h1>New Order</h1>
+      <h1>Place A New Order</h1>
       <main className='NewOrderPage'>
-        <aside>
-          <h2>Menus</h2>
-          <ul className='menus'>{allMenus}</ul>
-          {/* <ul>
-            { user.name === 'Admin' && <Link to="/menus/edit">Edit Menus</Link> }
-          </ul> */}
-        </aside>
         <div>
+          <div>
+            <ul className='menus'>{allMenus}</ul>
+          </div>
           <h2>Menu Items</h2>
-          <ul>{activeMenuItems}</ul>
+          <ul className='menu-items'>{activeMenuItems}</ul>
         </div>
-        <div>
+        <div className='current-order'>
           <h2>Current Order</h2>
           <form>
             <label>Room Number:</label>
@@ -77,7 +70,7 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
               value={enterOrder.roomNum}
               onChange={handleChangeOrder}
             />
-            <ul>{order}</ul>
+            <ul className='order-details'>{order}</ul>
             <button onClick={handleSubmitOrder}>Submit Order</button>
           </form>
         </div>

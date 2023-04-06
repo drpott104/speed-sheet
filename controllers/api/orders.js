@@ -10,12 +10,10 @@ async function getCurrentCart(req, res) {
     }
 }
 
-async function getPastOrders(req, res) {
+async function index(req, res) {
     try {
-        console.log(req.user)
-        const orderHistory = await Order.find({user: req.user._id, isStaged: true})
-        console.log(orderHistory, 'order history from controller')
-        res.status(200).json(orderHistory)
+        const orders = await Order.find({user: req.user._id, isStaged: true})
+        res.status(200).json(orders)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -23,7 +21,8 @@ async function getPastOrders(req, res) {
 
 async function create(req, res) {
     try {
-        // req.body.user = req.user.id
+        console.log(req.user)
+        req.body.user = req.user._id
         const newOrder = await Order.create(req.body)
         res.json(newOrder)
     } catch(err) {
@@ -37,7 +36,7 @@ async function getAll(req, res) {
 
 module.exports = {
     getCurrentCart,
-    getPastOrders,
+    index,
     create,
     getAll
 }

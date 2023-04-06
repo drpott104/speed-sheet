@@ -22,7 +22,7 @@ export default function App() {
     async function getMenus() {
       const menuResults = await menuAPI.getMenus()
       const menuItemResults = await menuAPI.getMenuItems()
-      const pastOrders = await orderAPI.getAllPastOrders()
+      const pastOrders = await orderAPI.getPastOrders()
       const currentCart = await orderAPI.getCurrentCart()
       const initialItems = menuItemResults.filter(i => i.menu.name === 'Breakfast')
       setMenus(menuResults)
@@ -30,7 +30,6 @@ export default function App() {
       setActiveItems(initialItems)
       setCurrentOrder(currentCart)
       setOrderHistory(pastOrders)
-      console.log(pastOrders, 'past orders')
     }
     getMenus()
   }, [])
