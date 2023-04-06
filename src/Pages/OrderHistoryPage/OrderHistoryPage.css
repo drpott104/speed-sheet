@@ -1,0 +1,8 @@
+.order-history {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.staged-orders {
+    list-style: none;
+}

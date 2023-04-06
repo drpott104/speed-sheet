@@ -1,6 +1,6 @@
-export default function MenuItems({ item }) {
-    function handleDelete(evt) {
-        console.log(evt, 'delete this')
+export default function OrderDetails({ item, enterOrder, setEnterOrder }) {
+    function handleDelete() {
+        
     }
 
     return (

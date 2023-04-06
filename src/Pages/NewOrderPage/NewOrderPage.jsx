@@ -13,10 +13,15 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
     currentOrder: []
   })
   
+    const refreshPage = () => {
+      window.location.reload();
+    }
+  
   function handleSubmitOrder(evt) {
     evt.preventDefault();
     enterOrder.isStaged = true
     newOrder(enterOrder);
+    refreshPage()
   }
 
   async function newOrder(orderData) {
@@ -37,9 +42,9 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
     const orderItem = activeItems.filter(i => i._id === itemId)
     setCurrentOrder([...currentOrder, ...orderItem])
   }
-  
+
   const order = currentOrder.map(item => (
-    <OrderDetails item={item} key={item._id} />
+    <OrderDetails item={item} key={item._id} enterOrder={enterOrder} setEnterOrder={setEnterOrder} />
   ))
 
   const activeMenuItems = activeItems.map(item => (
