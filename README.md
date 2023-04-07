@@ -12,8 +12,8 @@ This app was designed to assist in the order taking process
 
 ### Screenshots
 
-[Imgur](https://i.imgur.com/iHigF2g.png)
-[Imgur](https://i.imgur.com/5c6esIB.png)
+<img src="https://i.imgur.com/iHigF2g.png">
+<img src="https://i.imgur.com/5c6esIB.png">
 
 💻 Technologies Used
 JavaScript HTML5 CSS3 React Trello Heroku Github VSCode MongoDB 
