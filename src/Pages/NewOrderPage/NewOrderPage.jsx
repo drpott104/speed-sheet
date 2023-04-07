@@ -1,6 +1,5 @@
 import './NewOrderPage.css';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Menus from '../../components/Menus/Menus';
 import MenuItems from '../../components/MenuItems/MenuItems';
 import OrderDetails from '../../components/OrderDetails/OrderDetails';
@@ -13,15 +12,11 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
     currentOrder: []
   })
   
-    const refreshPage = () => {
-      window.location.reload();
-    }
-  
   function handleSubmitOrder(evt) {
     evt.preventDefault();
     enterOrder.isStaged = true
     newOrder(enterOrder);
-    refreshPage()
+    window.location.reload();
   }
 
   async function newOrder(orderData) {

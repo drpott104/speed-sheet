@@ -1,13 +1,9 @@
 export default function DeliveredOrders(order) {
-    function handleDelivery() {
-        order.order.isStaged = false;
-        order.order.isDelivered = true
-    }
-
+    console.log(order, 'delivered')
+    
     return (
         <li>
-            {order.order.roomNum}
-            <button onClick={handleDelivery}>O</button>
+            {order.roomNum}
         </li>
     )
 }

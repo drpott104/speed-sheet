@@ -3,6 +3,8 @@
     justify-content: space-evenly;
 }
 
-.staged-orders {
+.staged-orders, .delivered-orders {
     list-style: none;
+    display: flex;
+    flex-direction: column-reverse;
 }

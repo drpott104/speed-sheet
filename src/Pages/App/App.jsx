@@ -5,7 +5,6 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
-import EditMenusPage from '../EditMenusPage/EditMenusPage';
 import NavBar from '../../components/NavBar/NavBar';
 import * as menuAPI from "../../utilities/menu-api";
 import * as orderAPI from "../../utilities/order-api";
@@ -42,6 +41,7 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/orders" element={<OrderHistoryPage
+              user={user}
                 orderHistory={orderHistory}
                 setOrderHistory={setOrderHistory}
                 currentOrder={currentOrder}
@@ -58,7 +58,6 @@ export default function App() {
                 orderHistory={orderHistory}
                 setOrderHistory={setOrderHistory}
               />} />
-              {/* <Route path="/menus/edit" element={<EditMenusPage /> } /> */}
             </Routes>
           </>
           :

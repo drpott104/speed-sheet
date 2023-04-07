@@ -2,20 +2,17 @@ import "./OrderHistoryPage.css"
 import StagedOrders from '../../components/StagedOrders/StagedOrders'
 import DeliveredOrders from '../../components/DeliveredOrders/DeliveredOrders'
 
-export default function OrderHistoryPage({ orderHistory }) {
-  function handleDelivery(order) {
-    console.log('handle delivery')
-  }
-  
-  const stageTheseOrders = orderHistory.filter(o => o.isStaged === true)
-  const deliverTheseOrders = orderHistory.filter(o => o.isDelivered === true)
+export default function OrderHistoryPage({ user, orderHistory, setOrderHistory }) {
+  const userOrders = orderHistory.filter(o => o.user === user._id)
+  const stageTheseOrders = userOrders.filter(o => o.isStaged === true)
+  const deliverTheseOrders = userOrders.filter(o => o.isDelivered === true)
   
   const stagedOrders = stageTheseOrders.map(order => (
-    <StagedOrders order={order} key={order._id} />
+    <StagedOrders order={order} key={order._id} orderHistory={orderHistory} setOrderHistory={setOrderHistory} />
   ))
 
   const deliveredOrders = deliverTheseOrders.map(order => (
-    <DeliveredOrders order={order} key={order._id} handleDelivery={handleDelivery} />
+    <DeliveredOrders order={order} key={order._id} />
   ))
 
   return (

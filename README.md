@@ -1,4 +1,4 @@
-# MERN-Stack Infrastructure
+# Fairmont IRD Speed-Sheet
 
 Clone this repo for a future starter code for a future MERN-Stack project
 
