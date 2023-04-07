@@ -1,40 +1,30 @@
 # Fairmont IRD Speed-Sheet
 
-Clone this repo for a future starter code for a future MERN-Stack project
 
-## Here’s the process to create a new MERN-Stack project that starts with the infrastructure code:
+## https://speed-sheet.herokuapp.com/
 
-Clone the mern-infrastructure repo:
 
- ### git clone "url of mern-infrastructure" "name-of-project"
-👀 The folder created will be same as "name-of-project" instead of mern-infrastructure
+### Created by:
+Alan Potterton
 
-### cd "name-of-project"
+### Description
+This app was designed to assist in the order taking process
 
-Install the Node modules:
-### npm i
+### Screenshots
 
-Create a .env (touch .env) and add entries for DATABASE_URL and SECRET
+[Imgur](https://i.imgur.com/iHigF2g.png)
+[Imgur](https://i.imgur.com/5c6esIB.png)
 
-Update the "name": "mern-infrastructure" in package.json to the name of your project.
+💻 Technologies Used
+JavaScript HTML5 CSS3 React Trello Heroku Github VSCode MongoDB 
 
-Build the React code to create the build folder, otherwise the Express server will not start up:
-### npm run build
+🔥 Getting Started
+How to Create a Mood
+1. 
+Trello Board
+https://trello.com/b/FkPQQCgL/speed-sheet
 
-Create a new repo on your personal GH account.
+📡 Upcoming Features
+[❌] Allow user to set an estimated delivery time, and track actual delivery time
 
-Copy the new GH repo’s URL.
-
-Update the remote’s URL:
-### git remote set-url origin "paste the copied GH url"
-
-Make the initial commit:
-### git add -A && git commit -m "Initial commit"
-
-Push for the first time:
-### git push -u origin main
-
-Remember that the Express server won’t start without error until the build folder used by Express is created by running:
-npm run build
-
-Have fun coding your new project and don’t forget to make frequent commits!
+[❌] Allow an admin to create, update, and delete menu items
