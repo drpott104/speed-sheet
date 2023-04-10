@@ -18,13 +18,11 @@ This app was designed to assist in the order taking process
 💻 Technologies Used
 JavaScript HTML5 CSS3 React Trello Heroku Github VSCode MongoDB 
 
-🔥 Getting Started
-How to Create a Mood
-1. 
 Trello Board
 https://trello.com/b/FkPQQCgL/speed-sheet
 
 📡 Upcoming Features
+
 [❌] Allow user to set an estimated delivery time, and track actual delivery time
 
 [❌] Allow an admin to create, update, and delete menu items

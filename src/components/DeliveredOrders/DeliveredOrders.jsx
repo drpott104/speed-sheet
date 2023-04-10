@@ -1,9 +1,8 @@
 export default function DeliveredOrders(order) {
-    console.log(order, 'delivered')
-    
+    console.log(order, 'delivered orders')
     return (
         <li>
-            {order.roomNum}
+            {order.order.roomNum}
         </li>
     )
 }

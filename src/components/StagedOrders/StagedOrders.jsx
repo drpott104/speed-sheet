@@ -1,14 +1,25 @@
+import * as ordersAPI from "../../utilities/order-api"
+
 export default function StagedOrders({ order, orderHistory, setOrderHistory }) {
-    function handleDelete() {
-        const newList = orderHistory.filter(o => o._id !== order._id);
-        // setOrderHistory(...newList);
-        console.log(orderHistory, 'modified list')
+    async function handleDelete(evt) {
+        evt.preventDefault()
+        const newArray = await ordersAPI.deleteOrder(order._id)
+        setOrderHistory(newArray)
+    }
+    
+    async function handleDelivery(evt) {
+        evt.preventDefault()
+        const modOrder = await ordersAPI.deliverOrder(order._id)
+        console.log(orderHistory)
     }
     
     return (
-        <li>
-            {order.roomNum}
-            <button onClick={handleDelete}>X</button>
-        </li>
+        <form>
+            <li>
+                {order.roomNum}
+                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleDelivery}>Deliver</button>
+            </li>
+        </form>
     )
 }

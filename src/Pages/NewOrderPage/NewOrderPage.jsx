@@ -71,7 +71,7 @@ export default function NewOrderPage({ user, menus, menuItems, activeItems, setA
               onChange={handleChangeOrder}
             />
             <ul className='order-details'>{order}</ul>
-            <button onClick={handleSubmitOrder}>Submit Order</button>
+            <button className="submit-button" onClick={handleSubmitOrder}>Submit Order</button>
           </form>
         </div>
       </main>

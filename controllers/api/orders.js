@@ -12,7 +12,7 @@ async function getCurrentCart(req, res) {
 
 async function index(req, res) {
     try {
-        const orders = await Order.find({user: req.user._id, isStaged: true})
+        const orders = await Order.find({user: req.user._id})
         res.status(200).json(orders)
     } catch(err) {
         res.status(400).json(err)
@@ -30,13 +30,32 @@ async function create(req, res) {
     }
 }
 
-async function getAll(req, res) {
-    const orders = await Order.find({})
+async function deleteOrder(req, res) {
+    try {
+        await Order.findByIdAndDelete(req.params.id)
+    } catch (err) {
+        console.log(err)
+        res.status(400).json(err)
+    }
+}
+
+async function deliverOrder(req, res) {
+    try {
+        const order = await Order.findById(req.params.id)
+        order.isStaged = false
+        order.isDelivered = true
+        order.save()
+        res.json(order)
+    } catch (err) {
+        console.log(err)
+        res.status(400).json(err)
+    }
 }
 
 module.exports = {
     getCurrentCart,
     index,
     create,
-    getAll
+    deleteOrder,
+    deliverOrder
 }
