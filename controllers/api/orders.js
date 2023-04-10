@@ -21,7 +21,6 @@ async function index(req, res) {
 
 async function create(req, res) {
     try {
-        console.log(req.user)
         req.body.user = req.user._id
         const newOrder = await Order.create(req.body)
         res.json(newOrder)
@@ -34,7 +33,6 @@ async function deleteOrder(req, res) {
     try {
         await Order.findByIdAndDelete(req.params.id)
     } catch (err) {
-        console.log(err)
         res.status(400).json(err)
     }
 }
@@ -47,7 +45,6 @@ async function deliverOrder(req, res) {
         order.save()
         res.json(order)
     } catch (err) {
-        console.log(err)
         res.status(400).json(err)
     }
 }

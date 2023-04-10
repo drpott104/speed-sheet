@@ -33,7 +33,6 @@ export default function App() {
     getMenus()
   }, [])
   
-  console.log(orderHistory, "order history")
 
   return (
     <main className="App">

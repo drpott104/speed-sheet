@@ -6,12 +6,13 @@ export default function StagedOrders({ order, orderHistory, setOrderHistory }) {
         evt.preventDefault()
         const newArray = await ordersAPI.deleteOrder(order._id)
         setOrderHistory(newArray)
+        window.location.reload()
     }
     
     async function handleDelivery(evt) {
         evt.preventDefault()
         const modOrder = await ordersAPI.deliverOrder(order._id)
-        console.log(orderHistory)
+        window.location.reload()
     }
     
     return (
