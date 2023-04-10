@@ -1,3 +1,4 @@
+import './StagedOrders.css'
 import * as ordersAPI from "../../utilities/order-api"
 
 export default function StagedOrders({ order, orderHistory, setOrderHistory }) {
@@ -17,8 +18,8 @@ export default function StagedOrders({ order, orderHistory, setOrderHistory }) {
         <form>
             <li>
                 {order.roomNum}
-                <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleDelivery}>Deliver</button>
+                <button className='button' onClick={handleDelete}>Delete</button>
+                <button className='button' onClick={handleDelivery}>Deliver</button>
             </li>
         </form>
     )
